@@ -4,7 +4,8 @@ import {
   IsNotEmpty,
   IsNumber,
   IsString,
-  IsBoolean
+  IsBoolean,
+  Min
 } from 'class-validator';
 import { Mission } from '../../../shared/models/mission.model';
 
@@ -18,6 +19,7 @@ export class MissionEntity {
 
   @IsDefined()
   @IsNumber()
+  @Min(0)
   reward: number;
 
   @IsDefined()
