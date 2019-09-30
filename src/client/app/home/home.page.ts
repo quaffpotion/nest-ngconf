@@ -22,17 +22,26 @@ export class HomePage implements OnInit {
     this.missions = this.missionsService.getMissions();
   }
 
-async openMission(mission: Mission) {
-  const modal = await this.modalController.create({
-    component: MissionFormComponent,
-    componentProps: { id: mission.id }
-  });
-  await modal.present();
-  const { data = {} } = await modal.onDidDismiss();
-  if (data.refreshMissions) {
-    this.missions = this.missionsService.getMissions();
+  async openMission(mission: Mission) {
+    const modal = await this.modalController.create({
+      component: MissionFormComponent,
+      componentProps: { id: mission.id }
+    });
+    await modal.present();
+    const { data = {} } = await modal.onDidDismiss();
+    if (data.refreshMissions) {
+      this.missions = this.missionsService.getMissions();
+    }
   }
-}
 
-  async newMission() {}
+  async newMission() {
+    const modal = await this.modalController.create({
+      component: MissionFormComponent
+    });
+    await modal.present();
+    const { data = {} } = await modal.onDidDismiss();
+    if (data.refreshMissions) {
+      this.missions = this.missionsService.getMissions();
+    }
+  }
 }
