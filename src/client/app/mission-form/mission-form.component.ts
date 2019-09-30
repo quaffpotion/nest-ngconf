@@ -20,7 +20,12 @@ export class MissionFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
+    const id = this.navParams.data.id;
+    if (id) {
+      this.mission$ = this.missionsService.getMissionById(id);
+    } else {
+      this.mission$ = of({ active: false } as any);
+    }
   }
 
   close() {
