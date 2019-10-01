@@ -28,11 +28,11 @@ import { UsersService } from './users/users.service';
     },
     {
       provide: APP_PIPE,
-      useClass: ValidationPipe,
+      useClass: ValidationPipe
     },
     {
       provide: APP_GUARD,
-      useClass: AuthGuard,
+      useClass: AuthGuard
     }
   ]
 })
