@@ -5,7 +5,8 @@ import {
   Get,
   Param,
   Post,
-  Put
+  Put,
+  Request
 } from '@nestjs/common';
 import { MissionEntity } from '../data/mission.entity';
 import { User } from '../models/user.model';
@@ -29,7 +30,9 @@ export class MissionsController {
 
   @Post()
   @Roles('user')
-  async createMission(@Body() mission: MissionEntity) {
+  async createMission(@Body() mission: MissionEntity, @Request() req: any) {
+    const user: User = req.user;
+    mission.createdBy = user.name;
     return this.missionsService.createMission(mission);
   }
 

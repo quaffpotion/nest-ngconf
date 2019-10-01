@@ -5,7 +5,11 @@ import { User } from '../models/user.model';
 export class UsersService {
   users: User[] = [
     { id: 'user', name: 'Space Ranger Joe', roles: ['user'] },
-    { id: 'admin', name: 'Space Admin Becka', roles: ['user', 'admin'] }
+    {
+      id: 'admin',
+      name: 'Space Admin Becka',
+      roles: ['user', 'admin']
+    }
   ];
 
   getUser(id: string) {

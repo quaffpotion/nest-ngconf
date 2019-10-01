@@ -26,6 +26,9 @@ export class MissionEntity {
 
   @Exclude()
   createdAt: Date = new Date();
-  @Exclude()
+  //We no longer exclude this field because we want to
+  //be able to see the affect of including the user data
+  //with the request from the client
+  //@Exclude()
   createdBy = 'user';
 }
