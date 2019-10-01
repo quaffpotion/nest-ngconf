@@ -30,8 +30,7 @@ export class MissionsController {
 
   @Post()
   @Roles('user')
-  async createMission(@Body() mission: MissionEntity, @Request() req: any) {
-    const user: User = req.user;
+  async createMission(@Body() mission: MissionEntity, @GetUser() user: User) {
     mission.createdBy = user.name;
     return this.missionsService.createMission(mission);
   }
